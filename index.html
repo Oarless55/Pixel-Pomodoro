@@ -407,16 +407,36 @@
         const extractId = url => (url.match(/playlist\/([a-zA-Z0-9]+)/)||[])[1]||'';
         
         /* ========= BACKGROUND GIF HANDLING ========= */
-        function setBackground(url){
-            document.body.style.backgroundImage = `url('${url}')`;
-            localStorage.setItem('pixelTimerBG',url);
-        }
-        (function initBG(){
-            const saved = localStorage.getItem('pixelTimerBG');
-            if(saved) setBackground(saved);
-            qs('bgSel').value = saved || qs('bgSel').value;
-            qs('bgSel').addEventListener('change',e=>setBackground(e.target.value));
-        })();
+        /* ========= BACKGROUND GIF HANDLING ========= */
+function setBackground(url){
+    document.body.style.backgroundImage = `url('${url}')`;
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    localStorage.setItem('pixelTimerBG', url);
+}
+
+(function initBG(){
+    const bgSelect = document.getElementById('bgSel');
+    const saved = localStorage.getItem('pixelTimerBG');
+    
+    if(saved) {
+        // Kayıtlı tema varsa onu kullan
+        setBackground(saved);
+        bgSelect.value = saved;
+    } else {
+        // Kayıtlı tema yoksa Pixel City'yi kaydet
+        const defaultBG = 'https://i.pinimg.com/originals/1d/1a/4d/1d1a4d12a523ae4b35205f18f1a3535e.gif';
+        setBackground(defaultBG);
+        bgSelect.value = defaultBG;
+    }
+    
+    // Dropdown değişikliklerini dinle
+    bgSelect.addEventListener('change', function(e) {
+        setBackground(e.target.value);
+    });
+})();
         
         /* ========= SPOTIFY WIDGET LOGIC ========= */
         // Spotify kontrolü artık doğrudan iframe üzerinden yapılıyor
