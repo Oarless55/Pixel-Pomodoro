@@ -421,15 +421,17 @@ function setBackground(url){
     const bgSelect = document.getElementById('bgSel');
     const saved = localStorage.getItem('pixelTimerBG');
     
-    if(saved) {
-        // Kayıtlı tema varsa onu kullan
-        setBackground(saved);
-        bgSelect.value = saved;
-    } else {
-        // Kayıtlı tema yoksa Pixel City'yi kaydet
-        const defaultBG = 'https://i.pinimg.com/originals/1d/1a/4d/1d1a4d12a523ae4b35205f18f1a3535e.gif';
+    // Varsayılan tema: Pixel City
+    const defaultBG = 'https://i.pinimg.com/originals/1d/1a/4d/1d1a4d12a523ae4b35205f18f1a3535e.gif';
+    
+    // ZORLA Pixel City'yi ayarla (ilk seferlik)
+    if(!saved || saved.includes('ea/f2/10')) {  // Wave Grid linkini kontrol et
         setBackground(defaultBG);
         bgSelect.value = defaultBG;
+    } else if(saved) {
+        // Kayıtlı başka tema varsa onu kullan
+        setBackground(saved);
+        bgSelect.value = saved;
     }
     
     // Dropdown değişikliklerini dinle
