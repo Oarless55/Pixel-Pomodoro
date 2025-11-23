@@ -3,7 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixel Study Timer</title>
+    
+    <!-- 🎯 SEO META TAGS -->
+    <title>Pixel Pomodoro - Cozy Study Timer with Spotify & Notes 🎮</title>
+    <meta name="description" content="Free pixel art pomodoro timer for productive studying. Features Spotify integration, sticky notes, and beautiful pixel themes. Start focusing now!">
+    <meta name="keywords" content="pomodoro timer, study timer, pixel art, productivity app, spotify timer, focus timer, online pomodoro, sticky notes">
+    <meta name="author" content="Oarless55">
+    <meta name="robots" content="index, follow">
+    
+    <!-- 🌍 LANGUAGE -->
+    <meta name="language" content="English">
+    <meta http-equiv="content-language" content="en-US">
+    
+    <!-- 📱 SOCIAL MEDIA - Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Pixel Pomodoro">
+    <meta property="og:title" content="Pixel Pomodoro - Cozy Study Timer 🎮">
+    <meta property="og:description" content="Free pixel art pomodoro timer with Spotify integration and sticky notes for productive studying">
+    <meta property="og:url" content="https://oarless55.github.io/Pixel-Pomodoro/">
+    <meta property="og:image" content="https://i.pinimg.com/originals/1d/1a/4d/1d1a4d12a523ae4b35205f18f1a3535e.gif">
+    
+    <!-- 🐦 TWITTER -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pixel Pomodoro - Cozy Study Timer">
+    <meta name="twitter:description" content="Free pixel art pomodoro timer with Spotify & notes">
+    
+    <!-- 🎨 THEME COLORS -->
+    <meta name="theme-color" content="#e94560">
+    <meta name="msapplication-navbutton-color" content="#e94560">
+    
+    <!-- 🔗 CANONICAL URL -->
+    <link rel="canonical" href="https://oarless55.github.io/Pixel-Pomodoro/">
+    
     <style>
         * {
             margin: 0;
@@ -13,19 +44,193 @@
         }
 
         body {
-    background-color: #1a1a2e;
-    background-image: url('https://i.pinimg.com/originals/1d/1a/4d/1d1a4d12a523ae4b35205f18f1a3535e.gif');  /* ← Pixel City */
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    position: relative;
-}
+            background-color: #1a1a2e;
+            background-image: url('https://i.pinimg.com/originals/1d/1a/4d/1d1a4d12a523ae4b35205f18f1a3535e.gif');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            padding-top: 140px;
+        }
+        
+        /* ============ REKLAM PANELİ ============ */
+        .ad-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 90px;
+            background: linear-gradient(90deg, #e94560 0%, #0f3460 50%, #e94560 100%);
+            background-size: 200% 100%;
+            border-bottom: 6px solid #000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: adPulse 5s ease-in-out infinite;
+        }
+        
+        @keyframes adPulse {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .ad-content {
+            background: rgba(0,0,0,0.85);
+            border: 4px solid #fff;
+            padding: 10px 30px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(233,69,96,0.5);
+        }
+        
+        .ad-content h3 {
+            font-size: 10px;
+            color: #00eeff;
+            text-shadow: 2px 2px 0 #000;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+        }
+        
+        .ad-content p {
+            font-size: 7px;
+            color: #fff;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        /* ============ NOT KAĞITLARI ============ */
+        .notes-panel {
+            position: fixed;
+            left: 20px;
+            top: 120px;
+            width: 280px;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+            z-index: 90;
+            padding: 10px;
+        }
+        
+        .notes-header {
+            background: rgba(0,0,0,0.85);
+            border: 4px solid #e94560;
+            padding: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(233,69,96,0.5);
+        }
+        
+        .notes-header h3 {
+            font-size: 10px;
+            color: #e94560;
+            text-shadow: 2px 2px 0 #000;
+        }
+        
+        .add-note-btn {
+            background-color: #4CAF50;
+            border: 3px solid #000;
+            color: white;
+            padding: 8px 15px;
+            font-size: 8px;
+            cursor: pointer;
+            margin-top: 8px;
+            box-shadow: 3px 3px 0 #000;
+            transition: all 0.1s;
+            text-shadow: 1px 1px 0 #000;
+        }
+        
+        .add-note-btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0 #000;
+        }
+        
+        .sticky-note {
+            background: linear-gradient(135deg, #fff740 0%, #fff066 100%);
+            border: 3px solid #000;
+            padding: 12px;
+            margin-bottom: 15px;
+            min-height: 120px;
+            box-shadow: 5px 5px 0 rgba(0,0,0,0.3);
+            position: relative;
+            animation: noteAppear 0.3s ease;
+        }
+        
+        @keyframes noteAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.8) rotate(-5deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+        
+        .note-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            border-bottom: 2px solid rgba(0,0,0,0.2);
+            padding-bottom: 5px;
+        }
+        
+        .note-date {
+            font-size: 6px;
+            color: #000;
+            opacity: 0.7;
+        }
+        
+        .delete-note-btn {
+            background: #f44336;
+            border: 2px solid #000;
+            color: white;
+            font-size: 6px;
+            padding: 2px 6px;
+            cursor: pointer;
+            box-shadow: 2px 2px 0 #000;
+        }
+        
+        .delete-note-btn:hover {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0 #000;
+        }
+        
+        .note-textarea {
+            width: 100%;
+            min-height: 80px;
+            background: rgba(255,255,255,0.5);
+            border: 2px solid #000;
+            padding: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            color: #000;
+            resize: vertical;
+        }
+        
+        .note-textarea:focus {
+            outline: none;
+            background: rgba(255,255,255,0.8);
+        }
+        
+        .notes-panel::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .notes-panel::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.3);
+            border: 2px solid #000;
+        }
+        
+        .notes-panel::-webkit-scrollbar-thumb {
+            background: #e94560;
+            border: 2px solid #000;
+        }
+
         .container {
             background-color: rgba(44, 44, 78, 0.85);
             border: 8px solid #16213e;
@@ -141,16 +346,27 @@
             text-shadow: 1px 1px 0 #000;
         }
 
-        /* Pixel art elements */
-        .pixel-border {
-            border-style: solid;
-            border-width: 0px;
-            border-image: 
-                url('https://storage.ko-fi.com/cdn/useruploads/f413949b-7a6d-42e1-bc13-10fc3fac260e_lethalcompany.gifhttps://storage.ko-fi.com/cdn/useruploads/f413949b-7a6d-42e1-bc13-10fc3fac260e_lethalcompany.gif') 
-                2 repeat;
-        }
-
         @media (max-width: 500px) {
+            body {
+                padding-top: 100px;
+            }
+            
+            .ad-banner {
+                height: 70px;
+            }
+            
+            .ad-content h3 {
+                font-size: 8px;
+            }
+            
+            .ad-content p {
+                font-size: 6px;
+            }
+            
+            .notes-panel {
+                display: none;
+            }
+            
             .container {
                 padding: 20px;
             }
@@ -169,43 +385,78 @@
             }
         }
 
-       
         :root{
-            --primary-color:#0004ff;--secondary-color:#0030cc;--accent-color:#00eeff;
-            --text-color:#fff;--glow-color:rgba(0,255,0,.5)
+            --primary-color:#0004ff;
+            --secondary-color:#0030cc;
+            --accent-color:#00eeff;
+            --text-color:#fff;
+            --glow-color:rgba(0,255,0,.5)
         }
-        /* ... (ALL OLD CSS from previous answer here, unchanged!) ... */
         
-        /* ============ NEW : SPOTIFY WIDGET IN CORNER ============ */
         .spotify-widget{
-            position:fixed;top:190px;right:45px;z-index:99;
+            position:fixed;
+            top:190px;
+            right:45px;
+            z-index:99;
             width:260px;
-            background:rgba(0,0,0,.65);border:3px solid var(--primary-color);
-            backdrop-filter:blur(6px);padding:10px;box-shadow:0 0 15px var(--glow-color)
+            background:rgba(0,0,0,.65);
+            border:3px solid var(--primary-color);
+            backdrop-filter:blur(6px);
+            padding:10px;
+            box-shadow:0 0 15px var(--glow-color)
         }
+        
         .spotify-widget h4{
-            color:var(--primary-color);font-size:9px;text-align:center;margin-bottom:6px;
-            text-shadow:0 0 8px var(--glow-color);letter-spacing:1px
+            color:var(--primary-color);
+            font-size:9px;
+            text-align:center;
+            margin-bottom:6px;
+            text-shadow:0 0 8px var(--glow-color);
+            letter-spacing:1px
         }
+        
         #spotifyPlayer{
             width:100%;
             margin-bottom: 10px;
             box-shadow: 0 0 15px var(--glow-color);
         }
-        /* ---------- BG-GIF DROPDOWN ---------- */
+        
         .bg-select{margin-top:10px}
         .bg-select select{
-            width:100%;padding:6px;font-size:8px;
-            background:rgba(0,0,0,.8);color:var(--primary-color);
-            border:2px solid var(--primary-color);cursor:pointer
+            width:100%;
+            padding:6px;
+            font-size:8px;
+            background:rgba(0,0,0,.8);
+            color:var(--primary-color);
+            border:2px solid var(--primary-color);
+            cursor:pointer
         }
-        .bg-select label{display:block;font-size:8px;color:var(--primary-color);margin-bottom:4px}
+        .bg-select label{
+            display:block;
+            font-size:8px;
+            color:var(--primary-color);
+            margin-bottom:4px
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- You can replace this with your pixel GIF -->
-    <!-- <img id="https://i.pinimg.com/originals/71/31/77/713177e7b221e3d2570237268fd19c6e.gif" alt="Pixel Background"> -->
+    <!-- REKLAM PANELİ -->
+    <div class="ad-banner">
+        <div class="ad-content">
+            <h3>📢 REKLAM ALANI</h3>
+            <p>Google AdSense kodunuzu buraya ekleyin</p>
+        </div>
+    </div>
+
+    <!-- NOT KAĞITLARI -->
+    <div class="notes-panel">
+        <div class="notes-header">
+            <h3>📝 NOTLAR</h3>
+            <button class="add-note-btn" onclick="addNote()">+ YENİ NOT</button>
+        </div>
+        <div id="notesContainer"></div>
+    </div>
     
     <div class="container">
         <h1>PIXEL STUDY TIMER</h1>
@@ -239,38 +490,26 @@
         <div class="bg-select">
             <label for="bgSel">THEME ✨</label>
             <select id="bgSel">
-    <option value="https://i.pinimg.com/originals/ea/f2/10/eaf2102aaa597054f587c5caaeb9e3da.gif">🌊 Wave Grid</option>
-    
-    <option value="https://i.pinimg.com/originals/1d/1a/4d/1d1a4d12a523ae4b35205f18f1a3535e.gif" selected>🌌 Pixel City</option>
-    
-    <option value="https://i.pinimg.com/originals/f4/35/00/f43500eba99d32bd7ad50decfb9073c4.gif">🌠 Star Night</option>
-    
-    <option value="https://i.pinimg.com/originals/14/ae/7e/14ae7ede205573466d68eb3a562fe349.gif">🌴 Poke Night</option>
-    
-    <option value="https://i.pinimg.com/originals/c0/a2/c1/c0a2c1bbf109de83b2b474ab2795b847.gif">🛰️ Jack and Chill</option>
-    
-    <option value="https://i.pinimg.com/originals/1a/f6/89/1af689d42bdb7686df444f22925f9e89.gif">🌧️ Rain</option>
-</select>
+                <option value="https://i.pinimg.com/originals/ea/f2/10/eaf2102aaa597054f587c5caaeb9e3da.gif">🌊 Wave Grid</option>
+                <option value="https://i.pinimg.com/originals/1d/1a/4d/1d1a4d12a523ae4b35205f18f1a3535e.gif" selected>🌌 Pixel City</option>
+                <option value="https://i.pinimg.com/originals/f4/35/00/f43500eba99d32bd7ad50decfb9073c4.gif">🌠 Star Night</option>
+                <option value="https://i.pinimg.com/originals/14/ae/7e/14ae7ede205573466d68eb3a562fe349.gif">🌴 Poke Night</option>
+                <option value="https://i.pinimg.com/originals/c0/a2/c1/c0a2c1bbf109de83b2b474ab2795b847.gif">🛰️ Jack and Chill</option>
+                <option value="https://i.pinimg.com/originals/1a/f6/89/1af689d42bdb7686df444f22925f9e89.gif">🌧️ Rain</option>
+            </select>
         </div>
     </div>
-    
-    <!-- ============ THE ORIGINAL TIMER ============ -->
-    <!--  (use EXACT HTML from previous answer – shortened here for brevity) -->
-    <!-- <div class="container" data-theme="classic">
-        theme label, timers, buttons, etc … 
-    </div> -->
     
     <script>
         // Timer variables
         let timer;
         let isRunning = false;
-        let timeLeft = 60 * 60; // 25 minutes in seconds
+        let timeLeft = 60 * 60;
         let currentSessionTime = 60 * 60;
         let sessionCount = 0;
         let breakCount = 0;
         let isBreakTime = false;
 
-        // DOM elements
         const timerDisplay = document.getElementById('timer');
         const startBtn = document.getElementById('startBtn');
         const pauseBtn = document.getElementById('pauseBtn');
@@ -279,19 +518,16 @@
         const sessionCountDisplay = document.getElementById('sessionCount');
         const breakCountDisplay = document.getElementById('breakCount');
 
-        // Format time as MM:SS
         function formatTime(seconds) {
             const minutes = Math.floor(seconds / 60);
             const remainingSeconds = seconds % 60;
             return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
         }
 
-        // Update the timer display
         function updateDisplay() {
             timerDisplay.textContent = formatTime(timeLeft);
         }
 
-        // Start the timer
         function startTimer() {
             if (!isRunning) {
                 isRunning = true;
@@ -302,38 +538,28 @@
                     if (timeLeft <= 0) {
                         clearInterval(timer);
                         isRunning = false;
-                        
-                        // Play notification sound
                         playNotification();
                         
                         if (!isBreakTime) {
-                            // Study session completed
                             sessionCount++;
                             sessionCountDisplay.textContent = sessionCount;
                             alert('Study session completed! Time for a break.');
-                            
-                            // Start break time (5 minutes)
                             isBreakTime = true;
                             timeLeft = 5 * 60;
                             currentSessionTime = 5 * 60;
                         } else {
-                            // Break completed
                             breakCount++;
                             breakCountDisplay.textContent = breakCount;
                             alert('Break time over! Ready for another study session?');
-                            
-                            // Start new study session
                             isBreakTime = false;
                             timeLeft = currentSessionTime;
                         }
-                        
                         updateDisplay();
                     }
                 }, 1000);
             }
         }
 
-        // Pause the timer
         function pauseTimer() {
             if (isRunning) {
                 clearInterval(timer);
@@ -341,7 +567,6 @@
             }
         }
 
-        // Reset the timer
         function resetTimer() {
             clearInterval(timer);
             isRunning = false;
@@ -349,14 +574,12 @@
             updateDisplay();
         }
 
-        // Set session time
         function setSessionTime(minutes) {
             if (!isRunning) {
                 currentSessionTime = minutes * 60;
                 timeLeft = currentSessionTime;
                 updateDisplay();
                 
-                // Update active button
                 sessionBtns.forEach(btn => {
                     btn.classList.remove('active');
                     if (parseInt(btn.dataset.time) === minutes) {
@@ -366,9 +589,7 @@
             }
         }
 
-        // Play notification sound
         function playNotification() {
-            // Create a simple beep sound
             const audioContext = new (window.AudioContext || window.webkitAudioContext)();
             const oscillator = audioContext.createOscillator();
             const gainNode = audioContext.createGain();
@@ -386,7 +607,6 @@
             oscillator.stop(audioContext.currentTime + 0.5);
         }
 
-        // Event listeners
         startBtn.addEventListener('click', startTimer);
         pauseBtn.addEventListener('click', pauseTimer);
         resetBtn.addEventListener('click', resetTimer);
@@ -399,51 +619,97 @@
             });
         });
 
-        // Initialize display
         updateDisplay();
 
-        /* ========= UTILITIES ========= */
-        const qs = id => document.getElementById(id);
-        const extractId = url => (url.match(/playlist\/([a-zA-Z0-9]+)/)||[])[1]||'';
-        
-        /* ========= BACKGROUND GIF HANDLING ========= */
-        /* ========= BACKGROUND GIF HANDLING ========= */
-function setBackground(url){
-    document.body.style.backgroundImage = `url('${url}')`;
-    document.body.style.backgroundSize = 'cover';
-    document.body.style.backgroundAttachment = 'fixed';
-    document.body.style.backgroundPosition = 'center';
-    document.body.style.backgroundRepeat = 'no-repeat';
-    localStorage.setItem('pixelTimerBG', url);
-}
+        /* BACKGROUND */
+        function setBackground(url){
+            document.body.style.backgroundImage = `url('${url}')`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundAttachment = 'fixed';
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundRepeat = 'no-repeat';
+            localStorage.setItem('pixelTimerBG', url);
+        }
 
-(function initBG(){
-    const bgSelect = document.getElementById('bgSel');
-    const saved = localStorage.getItem('pixelTimerBG');
-    
-    // Varsayılan tema: Pixel City
-    const defaultBG = 'https://i.pinimg.com/originals/1d/1a/4d/1d1a4d12a523ae4b35205f18f1a3535e.gif';
-    
-    // ZORLA Pixel City'yi ayarla (ilk seferlik)
-    if(!saved || saved.includes('ea/f2/10')) {  // Wave Grid linkini kontrol et
-        setBackground(defaultBG);
-        bgSelect.value = defaultBG;
-    } else if(saved) {
-        // Kayıtlı başka tema varsa onu kullan
-        setBackground(saved);
-        bgSelect.value = saved;
-    }
-    
-    // Dropdown değişikliklerini dinle
-    bgSelect.addEventListener('change', function(e) {
-        setBackground(e.target.value);
-    });
-})();
-        
-        /* ========= SPOTIFY WIDGET LOGIC ========= */
-        // Spotify kontrolü artık doğrudan iframe üzerinden yapılıyor
-        
-        
+        (function initBG(){
+            const bgSelect = document.getElementById('bgSel');
+            const saved = localStorage.getItem('pixelTimerBG');
+            const defaultBG = 'https://i.pinimg.com/originals/1d/1a/4d/1d1a4d12a523ae4b35205f18f1a3535e.gif';
+            
+            if(!saved || saved.includes('ea/f2/10')) {
+                setBackground(defaultBG);
+                bgSelect.value = defaultBG;
+            } else if(saved) {
+                setBackground(saved);
+                bgSelect.value = saved;
+            }
+            
+            bgSelect.addEventListener('change', function(e) {
+                setBackground(e.target.value);
+            });
+        })();
+
+        /* NOT SİSTEMİ */
+        const NOTES_KEY = 'pixelTimerNotes';
+
+        function loadNotes() {
+            const saved = localStorage.getItem(NOTES_KEY);
+            return saved ? JSON.parse(saved) : [];
+        }
+
+        function saveNotes(notes) {
+            localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
+        }
+
+        function addNote() {
+            const notes = loadNotes();
+            const newNote = {
+                id: Date.now(),
+                text: '',
+                date: new Date().toLocaleString('tr-TR')
+            };
+            notes.unshift(newNote);
+            saveNotes(notes);
+            renderNotes();
+        }
+
+        function deleteNote(id) {
+            if(confirm('Bu notu silmek istediğinizden emin misiniz?')) {
+                const notes = loadNotes().filter(note => note.id !== id);
+                saveNotes(notes);
+                renderNotes();
+            }
+        }
+
+        function updateNote(id, text) {
+            const notes = loadNotes();
+            const note = notes.find(n => n.id === id);
+            if(note) {
+                note.text = text;
+                saveNotes(notes);
+            }
+        }
+
+        function renderNotes() {
+            const container = document.getElementById('notesContainer');
+            const notes = loadNotes();
+            
+            container.innerHTML = notes.map(note => `
+                <div class="sticky-note">
+                    <div class="note-header">
+                        <span class="note-date">${note.date}</span>
+                        <button class="delete-note-btn" onclick="deleteNote(${note.id})">✕</button>
+                    </div>
+                    <textarea 
+                        class="note-textarea" 
+                        placeholder="Notunuzu buraya yazın..."
+                        onchange="updateNote(${note.id}, this.value)"
+                    >${note.text}</textarea>
+                </div>
+            `).join('');
+        }
+
+        window.addEventListener('load', renderNotes);
     </script>
 </body>
 </html>
